@@ -1,9 +1,33 @@
-module.exports = {
+const Webpack = require('webpack')
+const config = {
 	devServer: {
 		overlay: {
 			warnings: false,
 			errors: false
 		}
 	},
-	lintOnSave: false
+	lintOnSave: false,
+	assetsDir: 'assets',
+	publicPath: './',
+	configureWebpack: {
+		plugins: [
+			new Webpack.ProvidePlugin({
+				jQuery: 'jquery',
+				$: 'jquery'
+			})
+		],
+		module: {
+			rules: [
+				{
+				　　test: /\.less$/,	
+				　　use: "less-loader",
+				}
+			]
+		},
+	},
+	
+	
+	
 }
+
+module.exports = config;
